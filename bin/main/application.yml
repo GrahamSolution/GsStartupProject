@@ -1,0 +1,97 @@
+spring:
+  profiles:
+    active: localhost
+
+---
+# =========================================================================
+# spring for STS
+# =========================================================================
+spring:
+  # database connection settings
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gsol_app_db
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  # message config
+  messages:
+    basename: "messages"
+    encoding: "UTF-8"
+
+---
+# =========================================================================
+# spring for development
+# =========================================================================
+spring:
+  profiles: docker
+  # database connection settings
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rdb/gsol_app_db
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  # message config
+  messages:
+    basename: "messages"
+    encoding: "UTF-8"
+
+---
+# =========================================================================
+# spring for production
+# =========================================================================
+spring:
+  profiles: kubernetes
+  # database connection settings
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${CLOUDSQL_MYSQL_HOST}/gsol_app_db
+    username: ${CLOUDSQL_MYSQL_USER}
+    password: ${CLOUDSQL_MYSQL_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  # message config
+  messages:
+    basename: "messages"
+    encoding: "UTF-8"
+# =========================================================================
+# logging config
+# =========================================================================
+logging:
+  level:
+    root: INFO
+    org:
+      springframework.web: DEBUG
+      hibernate:
+        SQL: debug
+        type:
+          EnumType: trace
+          descriptor:
+            sql:
+              BasicBinder: trace
+  file: application.log
+  # Logging pattern for file
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+# =========================================================================
+# jwt config
+# =========================================================================
+gsol:
+  app:
+    jwtSecret: grahamsolutionSecretKey
+    jwtExpirationMs: 1800000
