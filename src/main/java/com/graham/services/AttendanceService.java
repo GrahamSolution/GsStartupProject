@@ -86,4 +86,17 @@ public class AttendanceService {
 			}
 		}
 	}
+	
+	/**
+	 * 対象月の勤怠情報をファイル出力する
+	 * 
+	 * @param staffId
+	 * @param yearMonth
+	 * @param requests
+	 */
+	public void exportAttendance(int staffId, String yearMonth, List<AttendanceRequestForm> requests) {
+		
+		LOGGER.info("called AttendanceService.exportAttendance staffId = {}, yearMonth = {}, requestBody = {}", staffId, yearMonth, requests);
+
+	}
 }

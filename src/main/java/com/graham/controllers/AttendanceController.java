@@ -10,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +68,26 @@ public class AttendanceController {
 		AttendanceResponseForm attendances = attendanceService.attendanceIndex(staffId, yearMonth);
 		LOGGER.info("SUCCESS get attendance list");
 		return attendances;
+	}
+	
+	/**
+	 * 勤怠情報提出（当月分の勤怠情報をファイル出力する）
+	 * 
+	 * @param staffId
+	 * @param yearMonth
+	 * @param requests
+	 */
+	@PostMapping("/{staffId}")
+	@ResponseBody
+	public void submit(
+			@PathVariable("staffId") int staffId,
+			@RequestParam("yearMonth") String yearMonth,
+			@RequestBody List<AttendanceRequestForm> requests) {
+		
+		LOGGER.info("BEGIN AttendanceController update");
+		attendanceService.updateAttendance(staffId, yearMonth, requests);
+		attendanceService.exportAttendance(staffId, yearMonth, requests);
+		LOGGER.info("SUCCESS update attendance");
 	}
 	
 	@PutMapping("/{staffId}")
