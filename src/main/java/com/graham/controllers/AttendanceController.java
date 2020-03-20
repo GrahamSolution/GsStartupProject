@@ -22,6 +22,7 @@ import com.graham.common.GrahamHttpStatus;
 import com.graham.exception.GrahamError;
 import com.graham.exception.GrahamException;
 import com.graham.interfaces.request.AttendanceRequestForm;
+import com.graham.interfaces.request.AttendanceSubmitRequestForm;
 import com.graham.interfaces.response.AttendanceResponseForm;
 import com.graham.services.AttendanceService;
 import com.graham.services.StaffService;
@@ -77,16 +78,15 @@ public class AttendanceController {
 	 * @param yearMonth
 	 * @param requests
 	 */
-	@PostMapping("/{staffId}")
+	@PostMapping("/{staffId}/submit")
 	@ResponseBody
 	public void submit(
 			@PathVariable("staffId") int staffId,
 			@RequestParam("yearMonth") String yearMonth,
-			@RequestBody List<AttendanceRequestForm> requests) {
+			@RequestBody AttendanceSubmitRequestForm request) {
 		
-		LOGGER.info("BEGIN AttendanceController update");
-		attendanceService.updateAttendance(staffId, yearMonth, requests);
-		attendanceService.exportAttendance(staffId, yearMonth, requests);
+		LOGGER.info("BEGIN AttendanceController submit staffId: {}, yearMonth: {}, request: {}", staffId, yearMonth, request);
+		attendanceService.exportAttendance(staffId, yearMonth, request);
 		LOGGER.info("SUCCESS update attendance");
 	}
 	
