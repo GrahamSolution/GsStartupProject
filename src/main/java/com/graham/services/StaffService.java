@@ -186,6 +186,7 @@ public class StaffService {
 		String name = request.getName();
 		String nameKana = request.getNameKana();
 		String enteredDate = request.getEnteredDate();
+		// TODO
 		int staffTypeId = request.getRole();
 		String birthday = request.getBirthday();
 		String telephoneNumber = request.getTelephoneNumber();
