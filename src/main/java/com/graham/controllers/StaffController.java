@@ -33,7 +33,7 @@ public class StaffController {
 	@Autowired
 	private StaffService staffService;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(StaffService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(StaffController.class);
 	
 	/**
 	 * 社員一覧取得（管理者専用）

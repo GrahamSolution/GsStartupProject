@@ -22,7 +22,7 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(StaffService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
 	
 	/**
 	 * 権限一覧取得（管理者専用）

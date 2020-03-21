@@ -24,7 +24,7 @@ public class RoleService {
 	private RoleRepository roleRepository;
 	@Autowired
     private MessageSource messageSource;
-	private static final Logger LOGGER = LoggerFactory.getLogger(StaffService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RoleService.class);
 	
 	/**
 	 * 権限一覧取得
