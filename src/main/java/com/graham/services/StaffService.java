@@ -187,7 +187,7 @@ public class StaffService {
 		String nameKana = request.getNameKana();
 		String enteredDate = request.getEnteredDate();
 		// TODO
-		int staffTypeId = request.getRole();
+		int role = request.getRole();
 		String birthday = request.getBirthday();
 		String telephoneNumber = request.getTelephoneNumber();
 		int departmentId = request.getDepartmentId();
@@ -197,7 +197,7 @@ public class StaffService {
 		// 社員詳細情報 を更新する
 		LOGGER.info("start staffService.updateStaffBasicInfo.updateBasicInfo");
 		staffBasicInfoRepository.updateBasicInfo(
-				name, nameKana, enteredDate, staffTypeId, birthday,
+				name, nameKana, enteredDate, birthday,
 				telephoneNumber,departmentId,positionId,gradeId,staffId);
 	}
 	

@@ -43,13 +43,12 @@ public interface StaffBasicInfoRepository extends JpaRepository<StaffBasicInfoEn
 			+ "name = ?1, "
 			+ "name_kana = ?2, "
 			+ "entered_date = ?3, "
-			+ "staff_type_id = ?4, "
-			+ "birthday = ?5, "
-			+ "telephone_number = ?6, "
-			+ "department_id = ?7, "
-			+ "position_id = ?8, "
-			+ "grade_id = ?9 "
-			+ "where staff_id = ?10";
+			+ "birthday = ?4, "
+			+ "telephone_number = ?5, "
+			+ "department_id = ?6, "
+			+ "position_id = ?7, "
+			+ "grade_id = ?8 "
+			+ "where staff_id = ?9";
 
 	// 基本情報登録用クエリー
 	final String INSERT = "INSERT INTO\n" + 
@@ -88,7 +87,6 @@ public interface StaffBasicInfoRepository extends JpaRepository<StaffBasicInfoEn
 	 * 
 	 * @param nameKana 名前
 	 * @param enteredDate なまえ
-	 * @param staffTypeId 社員種別
 	 * @param birthday 誕生日
 	 * @param telephoneNumber 電話番号
 	 * @param departmentId 部署ID
@@ -103,7 +101,6 @@ public interface StaffBasicInfoRepository extends JpaRepository<StaffBasicInfoEn
 			String name,
 			String nameKana,
 			String enteredDate,
-			Integer staffTypeId,
 			String birthday,
 			String telephoneNumber,
 			Integer departmentId,
