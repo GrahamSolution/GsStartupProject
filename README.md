@@ -1,4 +1,6 @@
 # GsStartupProject
+社内システムのバックエンド
+
 ## 使用技術
 * プログラミング言語：java 1.8
 * フレームワーク：SpringBoot 2.1.6
