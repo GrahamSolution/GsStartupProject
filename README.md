@@ -8,6 +8,11 @@
 * RDBMS：mysql 5.7
 * 認証：JWT
 
+## ビルド
+```bash
+./gradlew build --stacktrace
+```
+
 ## 起動
 ```bash
 ./gradlew clean bootRun
